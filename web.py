@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import requests
 import os
 import sys
+
 # import time
 
 
@@ -10,11 +11,6 @@ def clear():
     os.system('clear')
 
 
-driver = ''
-i = ['q']
-clear()
-print("Sort searches: \n\n - h - For highest to lowest\n - l - For lowest to highest")
-filter_ = input(' > ').lower()
 
 def init():
     global driver
@@ -49,4 +45,19 @@ def main():
     sort_olx(filter_)
 
 
-main()
+if sys.argv[-1].lower() == 'h' or sys.argv[-1].lower() == 'l':
+    filter_ = sys.argv[-1].lower()
+    driver = ''
+    i = ['q']
+    clear()
+    main()
+    clear()
+else:
+    driver = ''
+    i = ['q']
+    clear()
+    print("Sort searches: \n\n - h - For highest to lowest\n - l - For lowest to highest")
+    filter_ = input(' > ').lower()
+    clear()
+    main()
+    clear()
