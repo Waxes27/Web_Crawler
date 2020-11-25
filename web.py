@@ -21,7 +21,8 @@ def init():
     PATH = f"{os.environ['HOME']}/Web_Crawler/.chromedriver"
 
     while len(i[-1]) > 0:
-        i.append(input('What item are we looking for: '))
+        print('######################')
+        i.append(input('What item(s) are we looking for: '))
     
     driver = webdriver.Chrome(PATH)
 
@@ -34,6 +35,8 @@ def sort_olx(filter_):
     elif filter_ == 'h':
         sort_by_highest = driver.find_element_by_xpath('//*[@id="container"]/main/div/section/div/div/div[4]/div[2]/div/div[1]/div/div[2]/ul/li[4]/div')
         sort_by_highest.click()
+
+
 def main():
     init()
     driver.implicitly_wait(6)
@@ -44,7 +47,6 @@ def main():
     sort_by = driver.find_element_by_xpath('//*[@id="container"]/main/div/section/div/div/div[4]/div[2]/div/div[1]/div/div[2]/div')
     sort_by.click()
     sort_olx(filter_)
-
 
 
 main()
