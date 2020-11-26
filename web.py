@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import requests
 import os
 import sys
+
 # import time
 
 
@@ -27,7 +28,8 @@ def init():
     PATH = f"{os.environ['HOME']}/Web_Crawler/.chromedriver"
 
     while len(i[-1]) > 0:
-        i.append(input('What item are we looking for: '))
+        print('######################')
+        i.append(input('What item(s) are we looking for: '))
     
     specs = input("Specs on GSMARENA? (ENTER for no): ")
     driver = webdriver.Chrome(PATH)
@@ -70,7 +72,19 @@ def main():
     #     gsm_arena()
 
 
-globals_()
-main()
-# init()
-# gsm_arena()
+if sys.argv[-1].lower() == 'h' or sys.argv[-1].lower() == 'l':
+    filter_ = sys.argv[-1].lower()
+    driver = ''
+    i = ['q']
+    clear()
+    main()
+    clear()
+else:
+    driver = ''
+    i = ['q']
+    clear()
+    print("Sort searches: \n\n - h - For highest to lowest\n - l - For lowest to highest")
+    filter_ = input(' > ').lower()
+    clear()
+    main()
+    clear()
