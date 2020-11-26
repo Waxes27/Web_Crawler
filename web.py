@@ -6,26 +6,43 @@ import sys
 # import time
 
 
+
 def clear():
     os.system('clear')
 
 
-driver = ''
-i = ['q']
-clear()
-print("Sort searches: \n\n - h - For highest to lowest\n - l - For lowest to highest")
-filter_ = input(' > ').lower()
+def globals_():
+    global i,driver,filter_
+    driver = ''
+    i = ['q']
+    clear()
+    print("Sort searches: \n\n - h - For highest to lowest\n - l - For lowest to highest")
+    filter_ = input(' > ').lower()
+
 
 def init():
     global driver
+    global gsm_driver
+    global specs
     PATH = f"{os.environ['HOME']}/Web_Crawler/.chromedriver"
 
     while len(i[-1]) > 0:
         i.append(input('What item are we looking for: '))
     
+    specs = input("Specs on GSMARENA? (ENTER for no): ")
     driver = webdriver.Chrome(PATH)
+    # if len(specs) > 0:
+    #     gsm_driver = webdriver.Chrome(PATH)
+        # gsm_arena()
 
     driver.get('https://www.olx.co.za')
+
+
+def gsm_arena():
+    gsm = gsm_driver.get('https://www.gsmarena.com/')
+    gsm_search = gsm_driver.find_element_by_id('topsearch-text')
+    gsm_search.send_keys(i[1], Keys.ENTER)
+
 
 def sort_olx(filter_):
     if filter_ == 'l':
@@ -34,6 +51,10 @@ def sort_olx(filter_):
     elif filter_ == 'h':
         sort_by_highest = driver.find_element_by_xpath('//*[@id="container"]/main/div/section/div/div/div[4]/div[2]/div/div[1]/div/div[2]/ul/li[4]/div')
         sort_by_highest.click()
+    else:
+        pass
+
+
 def main():
     init()
     driver.implicitly_wait(6)
@@ -42,9 +63,14 @@ def main():
     search_bar.send_keys(i[1], Keys.ENTER)
 
     sort_by = driver.find_element_by_xpath('//*[@id="container"]/main/div/section/div/div/div[4]/div[2]/div/div[1]/div/div[2]/div')
-    sort_by.click()
+    if len(filter_) != 0:
+        sort_by.click()
     sort_olx(filter_)
+    # if len(specs) > 0:
+    #     gsm_arena()
 
 
-
+globals_()
 main()
+# init()
+# gsm_arena()
