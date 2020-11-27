@@ -29,7 +29,7 @@ def init():
 
     #os.environ['HOME'] == "~"
     while len(i[-1]) > 0:
-        print('######################')
+        # print('######################')
         i.append(input('What item(s) are we looking for: '))
     
     specs = input("Specs on GSMARENA? (ENTER for no): ")
