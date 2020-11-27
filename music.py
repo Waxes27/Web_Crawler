@@ -10,7 +10,8 @@ songs = {
     '2' : ['. New Light - Justice Der','https://www.youtube.com/watch?v=gl3fQ3MiJS8'],
     '3' : ['. Yonkers - Tyler the Creator','https://www.youtube.com/watch?v=XSbZidsgMfw'],
     '4' : ['. Nymano - beauty','https://www.youtube.com/watch?v=PRZs9LXLy6s'],
-    '5' : ['. Juan Rios - Cascada','https://www.youtube.com/watch?v=5ccgR3fyf2g']
+    '5' : ['. Juan Rios - Cascada','https://www.youtube.com/watch?v=5ccgR3fyf2g'],
+    '6' : ['. Kevin Momo - Lately (feat. Blissful Sax)','https://www.youtube.com/watch?v=sutroWBOis0']
 }
 # print(songs['1. A Tale of 2 Citiez - J-cole'])
 os.system('clear')

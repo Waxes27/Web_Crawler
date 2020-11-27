@@ -16,6 +16,7 @@ def init():
     global driver
     PATH = f"{os.environ['HOME']}/Web_Crawler/.chromedriver"
 
+    #os.environ['HOME'] == "~"
     while len(i[-1]) > 0:
         print('######################')
         i.append(input('What item(s) are we looking for: '))
